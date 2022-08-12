@@ -1,0 +1,17 @@
+package com.ecommerce.models;
+
+import java.time.Instant;
+
+import lombok.Data;
+
+@Data
+public class Cliente {
+
+	private String _id;
+	private String nome;
+	private String telefone;
+	private String email;
+	private String senha;
+	private Instant cadastradoEm;
+	private Instant atualizadoEm;
+}

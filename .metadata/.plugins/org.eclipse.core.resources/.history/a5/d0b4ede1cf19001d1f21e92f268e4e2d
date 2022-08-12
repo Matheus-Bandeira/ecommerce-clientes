@@ -1,0 +1,5 @@
+package com.ecommerce.repositories;
+
+public interface IClienteRepository {
+
+}

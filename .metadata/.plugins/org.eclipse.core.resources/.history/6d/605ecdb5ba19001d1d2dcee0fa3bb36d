@@ -1,0 +1,14 @@
+package com.ecommerce.controllers;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ClienteController {
+
+	@PostMapping("/v1/clientes")
+	public String post() {
+		return null;
+	}
+	
+}

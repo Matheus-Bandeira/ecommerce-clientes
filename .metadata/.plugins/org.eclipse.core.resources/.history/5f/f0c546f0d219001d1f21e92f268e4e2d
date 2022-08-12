@@ -1,0 +1,21 @@
+package com.ecommerce.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ecommerce.models.Cliente;
+import com.ecommerce.repositories.IClienteRepository;
+
+@Service
+public class ClienteService {
+
+	
+	@Autowired
+	private IClienteRepository clienteRepository;
+	
+	public Cliente save(Cliente cliente) {
+		
+		return null;
+		
+	}
+}
