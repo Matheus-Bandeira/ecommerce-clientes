@@ -1,0 +1,9 @@
+# Spring Data
+spring.data.mongodb.host=localhost
+spring.data.mongodb.port=27017
+spring.data.mongodb.database=dbclientes
+
+# Server
+server.port=8081
+
+# Jwt Authentication

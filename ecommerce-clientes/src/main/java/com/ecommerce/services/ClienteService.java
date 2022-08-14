@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,16 @@ public class ClienteService {
 		clienteRepository.save(cliente);
 		return cliente;
 
+	}
+	
+	public Cliente get(String email, String senha) {
+		Optional<Cliente> optional = clienteRepository.findByEmailAndSenha(email, getHashMd5(senha));
+		
+		if(optional.isEmpty())
+			throw new IllegalArgumentException("Dados Inválidos, Cliente não encontrado");
+		
+		Cliente cliente = optional.get();
+		return cliente;
 	}
 
 	private static String getHashMd5(String value) {
