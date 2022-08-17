@@ -1,0 +1,19 @@
+package com.ecommerce.security;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TokenAuthenticationService {
+
+	@Value("${jwt.appication}")
+	private String application;
+	
+	@Value("${jwt.secret}")
+	private String secret;
+	
+	@Value("${jwt.expiration}")
+	private String expiration;
+	
+	
+}

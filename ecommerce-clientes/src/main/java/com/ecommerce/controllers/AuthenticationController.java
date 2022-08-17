@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ecommerce.dtos.AuthenticationRequestDto;
 import com.ecommerce.dtos.AuthenticationResponseDto;
 import com.ecommerce.models.Cliente;
+import com.ecommerce.security.TokenAuthenticationService;
 import com.ecommerce.services.ClienteService;
 
 import io.swagger.annotations.Api;
@@ -24,6 +25,9 @@ public class AuthenticationController {
 	@Autowired
 	private ClienteService clienteService;
 	
+	@Autowired
+	private TokenAuthenticationService tokenAuthenticationService;
+	
 	@ApiOperation("Serviço para autenticação de clientes.")
 	@PostMapping("/v1/auth")
 	public ResponseEntity<AuthenticationResponseDto> post(@Valid @RequestBody AuthenticationRequestDto dto) {
@@ -34,13 +38,13 @@ public class AuthenticationController {
 		try {
 			Cliente cliente = clienteService.get(dto.getEmail(), dto.getSenha());
 			authResponse.setMessage("Cliente obtido com sucesso.");
-			authResponse.setAccessToken(""); //TODO
+			authResponse.setAccessToken(tokenAuthenticationService.generateToken(cliente.getEmail()));
 			authResponse.setData(cliente);
 			
 			status = HttpStatus.OK;
 		}catch (IllegalArgumentException e) {
 			authResponse.setMessage(e.getMessage());
-			status = HttpStatus.BAD_REQUEST;
+			status = HttpStatus.UNAUTHORIZED;
 		}
 		
 		return ResponseEntity.status(status).body(authResponse);

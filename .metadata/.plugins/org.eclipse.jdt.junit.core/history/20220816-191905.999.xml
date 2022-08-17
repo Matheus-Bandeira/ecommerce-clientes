@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="EcommerceClientesApplicationTests" project="ecommerce-clientes" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.ecommerce.EcommerceClientesApplicationTests" time="0.872" displayname="EcommerceClientesApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.ecommerce.EcommerceClientesApplicationTests]">
+    <testcase name="postAuthentication" classname="com.ecommerce.EcommerceClientesApplicationTests" time="0.741" displayname="postAuthentication()" uniqueid="[engine:junit-jupiter]/[class:com.ecommerce.EcommerceClientesApplicationTests]/[method:postAuthentication()]"/>
+    <testcase name="postCliente" classname="com.ecommerce.EcommerceClientesApplicationTests" time="0.131" displayname="postCliente()" uniqueid="[engine:junit-jupiter]/[class:com.ecommerce.EcommerceClientesApplicationTests]/[method:postCliente()]"/>
+  </testsuite>
+</testrun>
