@@ -1,0 +1,13 @@
+{
+	"AWSEBDockerrunVersion": "1",
+	"Image": {
+		"Name": "bandeira94/ecommerce-pedidos",
+		"Update": "true"
+	},
+	"Ports": [
+		{
+			"ContainerPort": 8084,
+			"HostPort": 8084
+		}
+	]
+}

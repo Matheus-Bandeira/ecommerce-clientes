@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class ClienteService {
 
 	@Autowired
 	private IClienteRepository clienteRepository;
+	
+	
 
 	public Cliente save(Cliente cliente) {
 
@@ -33,6 +36,10 @@ public class ClienteService {
 		clienteRepository.save(cliente);
 		return cliente;
 
+	}
+	
+	public List<Cliente> findAll() {
+		return clienteRepository.findAll();
 	}
 	
 	public Cliente get(String email, String senha) {

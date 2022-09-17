@@ -22,6 +22,7 @@ public class SecurityConfig {
 				.addFilterAfter(new TokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 				.authorizeRequests().antMatchers(HttpMethod.POST, "/v1/auth").permitAll()
 				.antMatchers(HttpMethod.POST, "/v1/clientes").permitAll()
+				//.antMatchers(HttpMethod.GET, "/v1/clientes").permitAll()
 				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 				.anyRequest()
 				.authenticated();

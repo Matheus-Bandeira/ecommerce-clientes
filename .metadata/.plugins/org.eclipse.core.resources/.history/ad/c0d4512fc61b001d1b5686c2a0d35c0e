@@ -1,5 +1,0 @@
-package com.ecommerce.dtos;
-
-public class AuthenticationRequestDto {
-
-}
