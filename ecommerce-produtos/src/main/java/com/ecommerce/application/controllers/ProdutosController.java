@@ -9,6 +9,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,7 @@ public class ProdutosController {
 
 	@Autowired
 	private IProdutoDomainService produtoDomainService;
+	
 
 	@ApiOperation("Serviço para cadastro de produto.")
 	@PostMapping("/v1/produtos")
@@ -66,6 +68,20 @@ public class ProdutosController {
 		
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
+	
+	
+	@ApiOperation("Serviço para consulta de produtos.")
+	@GetMapping("/v1/produtos")
+	public ResponseEntity<List<ProdutoGetDto>> getAll() {
+
+		ModelMapper modelMapper = new ModelMapper();
+		
+		List<Produto> produtos = produtoDomainService.findAll();
+		List<ProdutoGetDto> dto = modelMapper.map(produtos, new TypeToken<List<ProdutoGetDto>>() {}.getType());
+		
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+	}
+	
 	
 	@ApiOperation("Serviço para consulta de produtos por categoria.")
 	@GetMapping("/v1/produtos/{categoriaId}")

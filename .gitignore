@@ -1,1 +1,7 @@
-/.metadata/
+# ignora os arquivos com extensões 
+.gitignore
+# ignora quaisquer diretórios chamados "metadata"
+.metadata/
+
+# Para ignorar todos os arquivos e sub-pastas da pasta metadata/
+metadata/

@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,7 @@ public class AuthenticationController {
 	@Autowired
 	private TokenAuthenticationService tokenAuthenticationService;
 	
+	
 	@ApiOperation("Serviço para autenticação de clientes.")
 	@PostMapping("/v1/auth")
 	public ResponseEntity<AuthenticationResponseDto> post(@Valid @RequestBody AuthenticationRequestDto dto) {
@@ -36,9 +38,10 @@ public class AuthenticationController {
 		HttpStatus status = null;
 		
 		try {
-			Cliente cliente = clienteService.get(dto.getEmail(), dto.getSenha());
+			//Cliente cliente = clienteService.get(dto.getEmail(), dto.getSenha());
+			var cliente = clienteService.get(dto.getEmail(), dto.getSenha());
 			authResponse.setMessage("Cliente obtido com sucesso.");
-			authResponse.setAccessToken(tokenAuthenticationService.generateToken(cliente.getEmail()));
+			authResponse.setAccessToken(tokenAuthenticationService.generateToken(cliente.getEmail(), "ROLE_CLIENTE"));
 			authResponse.setData(cliente);
 			
 			status = HttpStatus.OK;

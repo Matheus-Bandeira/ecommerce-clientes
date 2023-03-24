@@ -12,6 +12,7 @@ public class ProdutoGetDto {
 	private BigDecimal preco;
 	private Integer quantidade;
 	private String descricao;
+	private byte[] foto;
 	private CategoriaGetDto categoria;
-
+	
 }

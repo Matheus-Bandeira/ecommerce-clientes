@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,6 +40,7 @@ public class ClienteController {
 	@Autowired
 	private ObjectMapper objectMapper;
 	
+	
 	@GetMapping("/v1/clientes")
 	public ResponseEntity<List<Cliente>> getAllClients() {
 		return ResponseEntity.status(HttpStatus.OK).body(clienteService.findAll());
@@ -63,7 +65,7 @@ public class ClienteController {
 			//enviando mensagem
 			EmailMessageDto emailMessage = ClienteEmailHelper.gerarMensagemDeCriacaoDeConta(cliente);
 			String message = objectMapper.writeValueAsString(emailMessage);
-			emailMessageProducer.send(message);
+			//emailMessageProducer.send(message);
 			
 		} catch (IllegalArgumentException e) {
 			clienteResponse.setMessage(e.getMessage());

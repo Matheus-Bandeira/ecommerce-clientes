@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "api.pagamentos.uri",
+    "type": "java.lang.String",
+    "description": "A description for 'api.pagamentos.uri'"
+  },
+  {
+    "name": "api.pagamentos.user.name",
+    "type": "java.lang.String",
+    "description": "A description for 'api.pagamentos.user.name'"
+  },
+  {
+    "name": "api.pagamentos.user.key",
+    "type": "java.lang.String",
+    "description": "A description for 'api.pagamentos.user.key'"
+  }
+]}

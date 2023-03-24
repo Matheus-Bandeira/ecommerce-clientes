@@ -33,6 +33,21 @@ public class ProdutoDomainService implements IProdutoDomainService {
 
 		return produto;
 	}
+	
+	@Override
+	public Produto save(Integer id, byte[] foto) {
+		
+		Optional<Produto> optional = produtoRepository.findById(id);
+		if(optional.isEmpty())
+			throw new IllegalArgumentException("Produto Inválido.");
+		
+		Produto produto = optional.get();
+		produto.setFoto(foto);
+	
+		produtoRepository.save(produto);
+		
+		return produto;
+	}
 
 	@Override
 	public Produto delete(Integer id) {
@@ -45,6 +60,11 @@ public class ProdutoDomainService implements IProdutoDomainService {
 		produtoRepository.delete(produto);
 
 		return produto;
+	}
+	
+	@Override
+	public List<Produto> findAll() {
+		return produtoRepository.findAllByOrderByNomeAsc();
 	}
 
 	@Override

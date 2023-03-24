@@ -8,8 +8,9 @@ import org.springframework.stereotype.Repository;
 import com.ecommerce.domain.models.Produto;
 
 @Repository
-public interface IProdutoRepository extends JpaRepository<Produto, Integer>{
+public interface IProdutoRepository extends JpaRepository<Produto, Integer> {
 
-	//consulta de produtos por categoria
+	List<Produto> findAllByOrderByNomeAsc();
+	// consulta de produtos por categoria
 	List<Produto> findAllByCategoriaIdOrderByNomeAsc(Integer id);
 }

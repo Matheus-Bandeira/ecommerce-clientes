@@ -44,6 +44,9 @@ public class Produto {
 	@Column(length = 150, nullable = false)
 	private String descricao;
 	
+	@Column
+	private byte[] foto;
+	
 	@ManyToOne
 	@JoinColumn(name = "categoriaId", nullable = false)
 	private Categoria categoria;
